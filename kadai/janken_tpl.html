@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="js/jquery-2.1.3.min.js"></script>
+  <link rel="stylesheet" href="css/sample.css">
+  <title>じゃんけん</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>じゃんけん</h1>
+  </header>
+
+  <main>
+    コンピュータの出した手は
+    <div id="my_choice"><br></div>
+    <div id="status">じゃん！けん！</div>
+  
+
+    <div>
+      <button type="submit" value="グー" onclick="btnclick(0)">グー
+        <button type="submit" value="チョキ" onclick="btnclick(1)">チョキ
+          <button type="submit" value="パー" onclick="btnclick(2)">パー
+    </div>
+
+    <div>
+      <button type="submit" value="リセット" onclick="rst()">リセット
+    </div>
+    
+
+    <footer></footer>
+    <script>
+      //じゃんけん用のSCRIPTを書いてください 
+    
+      const status_id = document.getElementById("status");
+      const my_choice_id = document.getElementById("my_choice");
+
+      function btnclick(your_choice) {
+        let random = Math.floor(Math.random() * 3);
+        if (random == 0) {
+          status_id.innerText = judge(random, your_choice);
+          my_choice_id.innerText = "「グー」";
+        } else if (random == 1) {
+          status_id.innerText = judge(random, your_choice);
+          my_choice_id.innerText = "「チョキ」";
+        } else {
+          status_id.innerText = judge(random, your_choice);
+          my_choice_id.innerText = "「パー」";
+        }
+      }
+
+      function judge(my_choice, your_choice) {
+        if (my_choice == your_choice) {
+          return "あいこ!"
+        } else if (my_choice == 0 && your_choice == 1) {
+          return "負け!"
+        } else if (my_choice == 1 && your_choice == 2) {
+          return "負け!"
+        } else if (my_choice == 2 && your_choice == 0) {
+          return "負け!"
+        } else {
+          return "勝ち！！"
+        }
+      }
+
+      function rst() {
+        status_id.innerText = "じゃん！けん！"
+        my_choice_id.innerText = "\n";
+      }
+
+
+    </script>
+</body>
+
+</html>
